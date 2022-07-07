@@ -1,3 +1,4 @@
+from re import X
 import sys
 from tkinter import SEPARATOR
 from turtle import Screen, speed
@@ -29,7 +30,7 @@ KEY = {'UP':1,'DOWN':2,'LEFT':3, 'RIGTH':4}
 
 # we will initialise screen
 
-Screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHNT),pygame.HWSURFACE)
+screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHNT),pygame.HWSURFACE)
 
 # we have use hw surface which stands for hardware surface rafers to using memory on the video xcard for storing
 # draw as opposed to main memory
@@ -48,6 +49,46 @@ black = pygame.Color(0,0,0)
 
 # for clock at the left corner
 gameClock = pygame.time.Clock()
+
+def checkCollision(posA,As ,posB , Bs): # As is the size ofa and Bs is the size of b
+    if(posA.x <posB.x+Bs and posA+As > posB.x and posA.y <posB.y+Bs and posA.y+As > posB.y):
+        return True
+    return False
+
+# to Chek the boundaries rere we are not limiting boundaries like it can pass throught screen  an came for after
+
+def cheklimite(snake):
+    if(snake.x > SCREEN_WIDTH):
+        snake.x = SNAKE_SIZE
+    if(snake.x < 0):
+        snake.x = SCREEN_WIDTH - SNAKE_SIZE
+    if snake.y > (SCREEN_HEIGHNT):
+        snake.y = SNAKE_SIZE
+    if(snake.y < 0):
+        snake.y - SCREEN_HEIGHNT - SNAKE_SIZE
+
+
+# we will make class for food 
+
+class Apple:
+    def __init__(self,x,y,state):
+        self.x = x
+        self.y = y
+        self.state = state
+        self.color = pygame.color.Color('orange') #color of food
+
+
+    def draw(self,screen:
+        pygame.draw.rect(screen,self.color,(self.x,self.y,APPLE_SIZE,APPLE_SIZE),0)
+
+
+class segment:
+    self.x = x
+    self.y = y
+    self.direction = KEY['up']
+    self.color = "white"
+
+
 
 
 # we will define keys
@@ -95,7 +136,23 @@ def endGame():
         gameClock.tick(FPS)
     sys.exit(0)
 
+def drawScore(score):
+    score_numb = score_numb_font.render(str(score),1,pygame.Color('red'))
+    screen.blit(score_msg,(SCREEN_WIDTH - score_msg_size[0]-60,10))
+    screen.blit(score_numb,(SCREEN_WIDTH - 45,14))
+
+def drawGameTime(gameTime):
+    game_time = score_font.render('Time:',1,pygame.Color('white'))
+    game_time_numb = score_numb_font.render(str(gameTime/1000),1,pygame.Color('white'))
+    screen.blit(game_time,(30,10))
+    screen.blit(game_time_numb,(105,14))
+
+def exitScreen():
+    pass
 
 
+
+def main():
+   score = 0
         
 
