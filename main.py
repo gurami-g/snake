@@ -65,7 +65,7 @@ class Apple:
         self.x = x
         self.y = y
         self.state = state
-        self.color = pygame.color.Color("orange")     # color of food
+        self.color = pygame.color.Color("red")     # color of food
 
     def draw(self,screen):
         pygame.draw.rect(screen,self.color,(self.x,self.y,APPLE_SIZE,APPLE_SIZE),0)
@@ -89,6 +89,8 @@ class snake:
         blackBox.direction = KEY["UP"]
         blackBox.color = "NULL"
         self.stack.append(blackBox)
+
+
 
 # we will define moves of the snake
 
@@ -222,7 +224,7 @@ def getKey():
             sys.exit(0)
 
 def endGame():
-    message = game_over_font.render("Gsme Over",1,pygame.Color("white"))
+    message = game_over_font.render("Game Over",1,pygame.Color("white"))
     message_play_again = play_again_font.render("Play Again ? (Y/N)",1,pygame.Color("green"))
     screen.blit(message,(320,240))
     screen.blit(message_play_again,(320+12,240+40))
@@ -241,12 +243,12 @@ def endGame():
     sys.exit(0)
 
 def drawScore(score):
-    score_numb = score_numb_font.render(str(score),1,pygame.Color("red"))
+    score_numb = score_numb_font.render(str(score),1, pygame.Color("blue"))
     screen.blit(score_msg, (SCREEN_WIDTH - score_msg_size[0]-60,10))
     screen.blit(score_numb,(SCREEN_WIDTH - 45,14))
 
 def drawGameTime(gameTime):
-    game_time = score_font.render("Time:" , 1, pygame.Color("white"))
+    game_time = score_font.render("Time: " , 1, pygame.Color("white"))
     game_time_numb = score_numb_font.render(str(gameTime/1000),1,pygame.Color("white"))
     screen.blit(game_time,(30,10))
     screen.blit(game_time_numb,(105,14))
