@@ -149,8 +149,8 @@ class snake:
         if(self.direction == KEY["RIGHT"] and direction == KEY["LEFT"] or self.direction == KEY["LEFT"] and 
                 direction == KEY["RIGHT"]):
             pass
-        elif(self.direction == KEY["UP"] and direction == KEY["DOWN"] or self.direction == KEY["UP"] and 
-                direction == KEY["DOWN"]):
+        elif(self.direction == KEY["UP"] and direction == KEY["DOWN"] or self.direction == KEY["DOWN"] and 
+                direction == KEY["UP"]):
             pass
         else:
             self.direction = direction
