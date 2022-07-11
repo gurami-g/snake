@@ -23,7 +23,7 @@ YELLOW= (255,255,0)
 Red_DARK= (150,0,0)
 BLUE= (0,0,255)
 BLUE_DARK= (0,0,150)
-
+DarkRed = (191,30,30)
 
 
 BGCOLOR = Black # Background color
@@ -194,9 +194,9 @@ def drawWorm(wormCoords):
         x = coord['x'] * Cell_Size
         y = coord['y'] * Cell_Size
         wormSegmentRect = pygame.Rect(x, y, Cell_Size, Cell_Size)
-        pygame.draw.rect(DISPLAYSURF, DARKGreen, wormSegmentRect)
+        pygame.draw.rect(DISPLAYSURF, DarkRed, wormSegmentRect)
         wormInnerSegmentRect = pygame.Rect(x + 4, y + 4, Cell_Size - 8, Cell_Size - 8)
-        pygame.draw.rect(DISPLAYSURF, Green, wormInnerSegmentRect)
+        pygame.draw.rect(DISPLAYSURF, Red, wormInnerSegmentRect)
 
 
 def drawApple(coord):
